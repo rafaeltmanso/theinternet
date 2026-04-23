@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 const examples = [
   { id: 'ab-testing', name: 'A/B Testing', description: 'Test control and variation versions' },
@@ -55,8 +56,13 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-4xl font-bold text-foreground mb-2">The Internet</h1>
-          <p className="text-muted-foreground">A testing playground for automated testing practice</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">The Internet</h1>
+              <p className="text-muted-foreground">A testing playground for automated testing practice</p>
+            </div>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
