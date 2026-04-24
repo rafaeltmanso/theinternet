@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export function ThemeToggle() {
-  const [isDark, setIsDark] = useState(() => {
+  const [isDark, setIsDark] = useState(true)
+
+  useEffect(() => {
     // Check if dark class is present on initial render
-    return document.documentElement.classList.contains('dark')
-  })
+    setIsDark(document.documentElement.classList.contains('dark'))
+  }, [])
 
   const toggleTheme = () => {
     const newTheme = !isDark
