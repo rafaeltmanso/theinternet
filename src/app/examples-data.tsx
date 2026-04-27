@@ -4,12 +4,10 @@ import { ExampleCard } from './example-card'
 export const examples = [
   { id: 'ab-testing', name: 'A/B Testing', description: 'Test control and variation versions', category: 'Testing' },
   { id: 'add-remove-elements', name: 'Add/Remove Elements', description: 'Dynamically add and delete elements', category: 'Interactive' },
-  { id: 'basic-auth', name: 'Basic Auth', description: 'HTTP Basic Authentication', category: 'Auth' },
   { id: 'broken-images', name: 'Broken Images', description: 'Images with broken links', category: 'Media' },
   { id: 'challenging-dom', name: 'Challenging DOM', description: 'Dynamic DOM that changes', category: 'Advanced' },
   { id: 'checkboxes', name: 'Checkboxes', description: 'Check and uncheck checkboxes', category: 'Interactive' },
   { id: 'context-menu', name: 'Context Menu', description: 'Right-click context menu', category: 'Interactive' },
-  { id: 'digest-auth', name: 'Digest Authentication', description: 'HTTP Digest Authentication', category: 'Auth' },
   { id: 'disappearing-elements', name: 'Disappearing Elements', description: 'Elements that appear and disappear', category: 'Advanced' },
   { id: 'drag-and-drop', name: 'Drag and Drop', description: 'Drag elements between containers', category: 'Interactive' },
   { id: 'dropdown', name: 'Dropdown List', description: 'Select from dropdown options', category: 'Interactive' },
