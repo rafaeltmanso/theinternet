@@ -34,22 +34,20 @@ export default function FloatingMenu() {
             </p>
           </div>
 
-          <div className="relative mb-8">
-            <nav className="sticky top-20 p-4 rounded-lg bg-card border border-border shadow-lg z-40">
-              <ul className="flex gap-2 flex-wrap justify-center">
-                {menuItems.map(item => (
-                  <li key={item.id}>
-                    <a
-                      href={item.href}
-                      className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors block"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+          <nav className="sticky top-20 p-4 rounded-lg bg-card border border-border shadow-lg z-40 mb-8">
+            <ul className="flex gap-2 flex-wrap justify-center">
+              {menuItems.map(item => (
+                <li key={item.id}>
+                  <a
+                    href={item.href}
+                    className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors block"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <div className="space-y-8">
             {menuItems.map((item, index) => (
