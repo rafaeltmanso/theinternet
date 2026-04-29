@@ -5,6 +5,7 @@ export const examples = [
   { id: 'ab-testing', name: 'A/B Testing', description: 'Test control and variation versions', category: 'Testing' },
   { id: 'add-remove-elements', name: 'Add/Remove Elements', description: 'Dynamically add and delete elements', category: 'Interactive' },
   { id: 'broken-images', name: 'Broken Images', description: 'Images with broken links', category: 'Media' },
+  { id: 'canvas-drawing', name: 'Canvas Drawing', description: 'Drawing canvas with tools', category: 'Interactive' },
   { id: 'challenging-dom', name: 'Challenging DOM', description: 'Dynamic DOM that changes', category: 'Advanced' },
   { id: 'checkboxes', name: 'Checkboxes', description: 'Check and uncheck checkboxes', category: 'Interactive' },
   { id: 'context-menu', name: 'Context Menu', description: 'Right-click context menu', category: 'Interactive' },
@@ -21,11 +22,13 @@ export const examples = [
   { id: 'floating-menu', name: 'Floating Menu', description: 'Menu that floats on scroll', category: 'Advanced' },
   { id: 'forgot-password', name: 'Forgot Password', description: 'Password recovery flow', category: 'Auth' },
   { id: 'form-auth', name: 'Form Authentication', description: 'Login form with validation', category: 'Auth' },
+  { id: 'form-wizard', name: 'Form Wizard', description: 'Multi-step form with validation', category: 'Interactive' },
   { id: 'frames', name: 'Frames', description: 'Working with iframe elements', category: 'Advanced' },
   { id: 'geolocation', name: 'Geolocation', description: 'Get user location', category: 'Advanced' },
   { id: 'horizontal-slider', name: 'Horizontal Slider', description: 'Slider input control', category: 'Interactive' },
   { id: 'hovers', name: 'Hovers', description: 'Hover effects on elements', category: 'Interactive' },
   { id: 'infinite-scroll', name: 'Infinite Scroll', description: 'Scroll to load more content', category: 'Advanced' },
+  { id: 'infinite-scroll-pagination', name: 'Infinite Scroll & Pagination', description: 'Pagination with infinite scroll', category: 'Advanced' },
   { id: 'inputs', name: 'Inputs', description: 'Various input field types', category: 'Interactive' },
   { id: 'jquery-ui-menus', name: 'JQuery UI Menus', description: 'jQuery-style menu interactions', category: 'Interactive' },
   { id: 'js-alerts', name: 'JavaScript Alerts', description: 'Alert, confirm, and prompt dialogs', category: 'Interactive' },
@@ -35,6 +38,7 @@ export const examples = [
   { id: 'multiple-windows', name: 'Multiple Windows', description: 'Open and switch windows', category: 'Advanced' },
   { id: 'nested-frames', name: 'Nested Frames', description: 'Frames within frames', category: 'Advanced' },
   { id: 'notification-messages', name: 'Notification Messages', description: 'Flash message notifications', category: 'Interactive' },
+  { id: 'real-time-data', name: 'Real-time Data', description: 'Live polling and async updates', category: 'Advanced' },
   { id: 'redirect-link', name: 'Redirect Link', description: 'Page redirects', category: 'Advanced' },
   { id: 'secure-download', name: 'Secure File Download', description: 'Authenticated file download', category: 'Files' },
   { id: 'shadow-dom', name: 'Shadow DOM', description: 'Shadow DOM elements', category: 'Advanced' },
@@ -62,6 +66,7 @@ export const categories: Record<string, { label: string; color: string }> = {
   'Files': { label: 'Files', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
   'Media': { label: 'Media', color: 'bg-pink-500/10 text-pink-500 border-pink-500/20' },
   'Testing': { label: 'Testing', color: 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20' },
+  'API': { label: 'API', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
 }
 
 export function PageHeader() {
