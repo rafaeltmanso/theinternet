@@ -170,7 +170,7 @@ export default function FormWizard() {
     if (step === 1) {
       const fields: (keyof FormData)[] = ['username', 'email', 'password', 'confirmPassword']
       for (const field of fields) {
-        const error = await validateField(field, formData[field])
+        const error = await validateField(field, formData[field] as string)
         if (error) {
           newErrors[field] = error
           isValid = false
@@ -180,7 +180,7 @@ export default function FormWizard() {
     } else if (step === 2) {
       const fields: (keyof FormData)[] = ['fullName', 'phone', 'dateOfBirth']
       for (const field of fields) {
-        const error = await validateField(field, formData[field])
+        const error = await validateField(field, formData[field] as string)
         if (error) {
           newErrors[field] = error
           isValid = false
@@ -190,7 +190,7 @@ export default function FormWizard() {
     } else if (step === 3) {
       const fields: (keyof FormData)[] = ['street', 'city', 'state', 'zip', 'country']
       for (const field of fields) {
-        const error = await validateField(field, formData[field])
+        const error = await validateField(field, formData[field] as string)
         if (error) {
           newErrors[field] = error
           isValid = false

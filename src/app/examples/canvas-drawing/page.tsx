@@ -53,7 +53,9 @@ export default function CanvasDrawing() {
     if (!ctx) return
     
     const newIndex = historyIndex - 1
-    ctx.putImageData(history[newIndex], 0, 0)
+    const historyEntry = history[newIndex]
+    if (!historyEntry) return
+    ctx.putImageData(historyEntry, 0, 0)
     setHistoryIndex(newIndex)
   }, [history, historyIndex])
 
@@ -67,7 +69,9 @@ export default function CanvasDrawing() {
     if (!ctx) return
     
     const newIndex = historyIndex + 1
-    ctx.putImageData(history[newIndex], 0, 0)
+    const historyEntry = history[newIndex]
+    if (!historyEntry) return
+    ctx.putImageData(historyEntry, 0, 0)
     setHistoryIndex(newIndex)
   }, [history, historyIndex])
 

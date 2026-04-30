@@ -101,7 +101,7 @@ export default function InfiniteScrollPagination() {
   }, [loadingMore, loading, hasMore, page, fetchItems])
 
   const handleSort = (field: string) => {
-    const newSort = {
+    const newSort: SortConfig = {
       field,
       order: sort.field === field && sort.order === 'asc' ? 'desc' : 'asc'
     }
