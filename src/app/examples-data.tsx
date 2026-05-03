@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ExampleCard } from './example-card'
+import { ExampleCard } from '@/components/example-card'
 
 export const examples = [
   { id: 'ab-testing', name: 'A/B Testing', description: 'Test control and variation versions', category: 'Testing' },

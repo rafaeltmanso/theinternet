@@ -10,8 +10,8 @@
 - `npm run lint` - ESLint (most rules disabled; this is intentional for QA playground)
 
 ## Architecture
-- `src/app/examples/` - 44 QA testing scenarios, each in its own directory with `page.tsx`
-- `src/app/api/` - API routes for auth simulations (`/api/basic-auth`, `/api/digest-auth`)
+- `src/app/examples/` - 46 QA testing scenarios, each in its own directory with `page.tsx`
+- `src/app/api/` - API routes for CRUD operations (`/api/items`, `/api/paginated`, etc.)
 - `src/app/examples-data.tsx` - Registry of all examples with id, name, description, category
 - `src/components/` - Shared UI (theme-provider, example-card)
 - Path alias: `@/*` maps to `./src/*`
@@ -21,8 +21,8 @@
 
 ## Key Conventions
 - Examples use `'use client'` directive (client components with React hooks)
-- Tailwind CSS with custom theme using CSS variables (see `tailwind.config.ts`)
-- Dark mode via `next-themes` with `suppressHydrationWarning` on `<html>`
+- Tailwind CSS with custom theme using CSS variables (Tailwind v4 uses CSS-based config)
+- Dark mode via custom theme provider with `suppressHydrationWarning` on `<html>`
 - ESLint: most rules disabled (`no-explicit-any`, `no-unused-vars`, `react-hooks/exhaustive-deps`, etc.)
 - TypeScript: `strict: true` but `noImplicitAny: false`
 

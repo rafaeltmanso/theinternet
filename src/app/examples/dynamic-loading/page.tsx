@@ -1,17 +1,24 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 
 export default function DynamicLoading() {
   const [loading, setLoading] = useState(false)
   const [content, setContent] = useState<string>('')
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+  }, [])
 
   const startLoading = () => {
     setLoading(true)
     setContent('')
 
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setLoading(false)
       setContent('Hello World!')
     }, 5000)

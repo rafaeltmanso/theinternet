@@ -12,10 +12,11 @@ export default function FormAuth() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -115,7 +116,7 @@ export default function FormAuth() {
           </div>
 
           {message && (
-            <div className={`mb-6 p-4 rounded-lg ${
+            <div aria-live="polite" className={`mb-6 p-4 rounded-lg ${
               message.type === 'success'
                 ? 'bg-green-500/10 border border-green-500/20 text-green-500'
                 : 'bg-red-500/10 border border-red-500/20 text-red-500'

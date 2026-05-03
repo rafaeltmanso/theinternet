@@ -1,17 +1,12 @@
 import { NextResponse } from 'next/server'
-
-let items: { id: string; name: string; description: string; createdAt: string }[] = [
-  { id: '1', name: 'Item One', description: 'First test item', createdAt: new Date().toISOString() },
-  { id: '2', name: 'Item Two', description: 'Second test item', createdAt: new Date().toISOString() },
-  { id: '3', name: 'Item Three', description: 'Third test item', createdAt: new Date().toISOString() },
-]
+import { items, updateItem, removeItem, findItem } from '@/lib/api-store'
 
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params
-  const item = items.find(i => i.id === id)
+  const item = findItem(id)
 
   if (!item) {
     return NextResponse.json(
@@ -27,19 +22,31 @@ export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params
-  const body = await request.json()
-  const index = items.findIndex(i => i.id === id)
+  try {
+    const { id } = await params
+    const body = await request.json()
+    
+    const existing = findItem(id)
+    if (!existing) {
+      return NextResponse.json(
+        { error: 'Item not found' },
+        { status: 404 }
+      )
+    }
 
-  if (index === -1) {
+    // Only allow updating specific fields
+    const updates: Partial<typeof existing> = {}
+    if (body.name !== undefined) updates.name = body.name
+    if (body.description !== undefined) updates.description = body.description
+
+    updateItem(id, updates)
+    return NextResponse.json(findItem(id))
+  } catch {
     return NextResponse.json(
-      { error: 'Item not found' },
-      { status: 404 }
+      { error: 'Invalid JSON body' },
+      { status: 400 }
     )
   }
-
-  items[index] = { ...items[index], ...body }
-  return NextResponse.json(items[index])
 }
 
 export async function DELETE(
@@ -47,15 +54,15 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params
-  const index = items.findIndex(i => i.id === id)
+  const existing = findItem(id)
 
-  if (index === -1) {
+  if (!existing) {
     return NextResponse.json(
       { error: 'Item not found' },
       { status: 404 }
     )
   }
 
-  const deleted = items.splice(index, 1)[0]
-  return NextResponse.json({ message: 'Item deleted', item: deleted })
+  removeItem(id)
+  return NextResponse.json({ message: 'Item deleted', item: existing })
 }

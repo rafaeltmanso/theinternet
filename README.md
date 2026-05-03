@@ -7,7 +7,7 @@ Built with Next.js, TypeScript, and Tailwind CSS.
 
 ## Features
 
-- 40+ test scenarios under `/examples`
+- 46 test scenarios under `/examples`
 - Interactive, authentication, file, and advanced DOM cases
 - Client and API routes for auth simulations
 - Lightweight setup for local QA automation practice

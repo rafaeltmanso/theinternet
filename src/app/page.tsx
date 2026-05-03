@@ -1,7 +1,7 @@
 'use client'
 
 import { examples } from './examples-data'
-import { ExampleCard } from './example-card'
+import { ExampleCard } from '@/components/example-card'
 import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function Home() {

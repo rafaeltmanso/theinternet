@@ -58,26 +58,33 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json()
-  
-  if (body.action === 'clear') {
-    notifications = []
-    return NextResponse.json({ message: 'Notifications cleared', notifications: [] })
-  }
-
-  if (body.message) {
-    const newNotification = {
-      id: ++idCounter,
-      message: body.message,
-      type: body.type || 'info',
-      timestamp: new Date().toISOString(),
+  try {
+    const body = await request.json()
+    
+    if (body.action === 'clear') {
+      notifications = []
+      return NextResponse.json({ message: 'Notifications cleared', notifications: [] })
     }
-    notifications = [...notifications.slice(-19), newNotification]
-    return NextResponse.json(newNotification, { status: 201 })
-  }
 
-  return NextResponse.json(
-    { error: 'Invalid request. Provide { action: "clear" } or { message, type }' },
-    { status: 400 }
-  )
+    if (body.message) {
+      const newNotification = {
+        id: ++idCounter,
+        message: body.message,
+        type: body.type || 'info',
+        timestamp: new Date().toISOString(),
+      }
+      notifications = [...notifications.slice(-19), newNotification]
+      return NextResponse.json(newNotification, { status: 201 })
+    }
+
+    return NextResponse.json(
+      { error: 'Invalid request. Provide { action: "clear" } or { message, type }' },
+      { status: 400 }
+    )
+  } catch {
+    return NextResponse.json(
+      { error: 'Invalid JSON body' },
+      { status: 400 }
+    )
+  }
 }

@@ -238,12 +238,17 @@ export default function FormWizard() {
     if (submittedRef.current) return
     submittedRef.current = true
     
-    const isValid = await validateStep(currentStep)
-    if (isValid) {
-      setSubmittedData({ ...formData })
-      setIsSubmitted(true)
+    try {
+      const isValid = await validateStep(currentStep)
+      if (isValid) {
+        setSubmittedData({ ...formData })
+        setIsSubmitted(true)
+      } else {
+        submittedRef.current = false
+      }
+    } catch {
+      submittedRef.current = false
     }
-    submittedRef.current = false
   }
 
   const handleReset = () => {

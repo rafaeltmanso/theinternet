@@ -13,6 +13,7 @@ export default function FileUpload() {
     if (selectedFile) {
       setFile(selectedFile)
       setUploaded(false)
+      e.target.value = '' // Reset to allow re-selecting same file
     }
   }
 
