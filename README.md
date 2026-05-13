@@ -9,7 +9,7 @@ Built with Next.js, TypeScript, and Tailwind CSS.
 
 - 46 test scenarios under `/examples`
 - Interactive, authentication, file, and advanced DOM cases
-- Client and API routes for auth simulations
+- Client-side auth simulations and API routes for async/data scenarios
 - Lightweight setup for local QA automation practice
 
 ## Tech Stack
@@ -49,17 +49,25 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Authentication examples:
 
-- `/examples/basic-auth`
-- `/examples/digest-auth`
+- `/examples/form-auth`
+- `/examples/secure-download`
 
 Related API endpoints:
 
-- `/api/basic-auth`
-- `/api/digest-auth`
+- `/api/items`
+- `/api/paginated`
+- `/api/real-time`
+- `/api/status/<code>`
+- `/api/delay/<ms>`
 
 ### Demo Credentials
 
-For auth examples, use:
+For `/examples/form-auth`, use:
+
+- Username: `tomsmith`
+- Password: `SuperSecretPassword!`
+
+For `/examples/secure-download`, use:
 
 - Username: `admin`
 - Password: `password`

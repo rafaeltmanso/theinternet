@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 type SortDirection = 'asc' | 'desc' | null
 
@@ -81,21 +82,26 @@ export default function SortableTables() {
                     {columns.map(column => (
                       <th
                         key={column.id}
-                        onClick={() => handleSort(column.id)}
-                        className="px-6 py-4 text-left text-sm font-semibold text-foreground cursor-pointer hover:bg-accent/50 transition-colors select-none"
+                        scope="col"
+                        aria-sort={
+                          sortColumn === column.id
+                            ? sortDirection === 'asc' ? 'ascending' : 'descending'
+                            : 'none'
+                        }
+                        className="px-6 py-4 text-left text-sm font-semibold text-foreground"
                       >
-                        <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleSort(column.id)}
+                          className="flex items-center gap-2 hover:text-primary transition-colors"
+                        >
                           {column.label}
                           {sortColumn === column.id && (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              {sortDirection === 'asc' ? (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                              ) : (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                              )}
-                            </svg>
+                            sortDirection === 'asc'
+                              ? <ChevronUp className="w-4 h-4" aria-hidden="true" />
+                              : <ChevronDown className="w-4 h-4" aria-hidden="true" />
                           )}
-                        </div>
+                        </button>
                       </th>
                     ))}
                   </tr>

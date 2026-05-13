@@ -146,10 +146,11 @@ export default function RealTimeData() {
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="poll-interval" className="block text-sm font-medium text-foreground mb-2">
                     Poll Interval (ms)
                   </label>
                   <select
+                    id="poll-interval"
                     value={pollInterval}
                     onChange={(e) => setPollInterval(Number(e.target.value))}
                     disabled={isPolling}

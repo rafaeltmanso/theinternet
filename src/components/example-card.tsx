@@ -1,23 +1,16 @@
 import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
 import { memo } from 'react'
+import { categories, type ExampleCategory } from '@/app/examples-data'
 
 interface ExampleCardProps {
   id: string
   name: string
   description: string
-  category: string
+  category: ExampleCategory
 }
 
 export const ExampleCard = memo(function ExampleCard({ id, name, description, category }: ExampleCardProps) {
-  const categoryColors: Record<string, string> = {
-    'Interactive': 'bg-blue-500/10 text-blue-500 border-blue-500/20',
-    'Advanced': 'bg-purple-500/10 text-purple-500 border-purple-500/20',
-    'Auth': 'bg-green-500/10 text-green-500 border-green-500/20',
-    'Files': 'bg-orange-500/10 text-orange-500 border-orange-500/20',
-    'Media': 'bg-pink-500/10 text-pink-500 border-pink-500/20',
-    'Testing': 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20',
-  }
-
   return (
     <Link
       href={`/examples/${id}`}
@@ -29,14 +22,12 @@ export const ExampleCard = memo(function ExampleCard({ id, name, description, ca
             {name}
           </h3>
           <p className="text-sm text-muted-foreground truncate">{description}</p>
-          <span className={`inline-block mt-2 px-2 py-0.5 rounded text-xs font-medium ${categoryColors[category] || 'bg-gray-500/10 text-gray-500'}`}>
-            {category}
+          <span className={`inline-block mt-2 px-2 py-0.5 rounded text-xs font-medium ${categories[category].color}`}>
+            {categories[category].label}
           </span>
         </div>
         <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded bg-muted/50 group-hover:bg-primary/10 transition-colors">
-          <svg className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" aria-hidden="true" />
         </div>
       </div>
     </Link>

@@ -1,7 +1,23 @@
-import Link from 'next/link'
-import { ExampleCard } from '@/components/example-card'
+export const categories = {
+  Interactive: { label: 'Interactive', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' },
+  Advanced: { label: 'Advanced', color: 'bg-purple-500/10 text-purple-500 border-purple-500/20' },
+  Auth: { label: 'Authentication', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
+  Files: { label: 'Files', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
+  Media: { label: 'Media', color: 'bg-pink-500/10 text-pink-500 border-pink-500/20' },
+  Testing: { label: 'Testing', color: 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20' },
+  API: { label: 'API', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
+} as const
 
-export const examples = [
+export type ExampleCategory = keyof typeof categories
+
+export interface Example {
+  id: string
+  name: string
+  description: string
+  category: ExampleCategory
+}
+
+export const examples: Example[] = [
   { id: 'ab-testing', name: 'A/B Testing', description: 'Test control and variation versions', category: 'Testing' },
   { id: 'add-remove-elements', name: 'Add/Remove Elements', description: 'Dynamically add and delete elements', category: 'Interactive' },
   { id: 'broken-images', name: 'Broken Images', description: 'Images with broken links', category: 'Media' },
@@ -49,31 +65,3 @@ export const examples = [
   { id: 'typos', name: 'Typos', description: 'Find spelling errors', category: 'Testing' },
   { id: 'wysiwyg-editor', name: 'WYSIWYG Editor', description: 'Rich text editor', category: 'Interactive' },
 ]
-
-import { Fragment } from 'react'
-
-export interface Example {
-  id: string
-  name: string
-  description: string
-  category: string
-}
-
-export const categories: Record<string, { label: string; color: string }> = {
-  'Interactive': { label: 'Interactive', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' },
-  'Advanced': { label: 'Advanced', color: 'bg-purple-500/10 text-purple-500 border-purple-500/20' },
-  'Auth': { label: 'Authentication', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
-  'Files': { label: 'Files', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
-  'Media': { label: 'Media', color: 'bg-pink-500/10 text-pink-500 border-pink-500/20' },
-  'Testing': { label: 'Testing', color: 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20' },
-  'API': { label: 'API', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
-}
-
-export function PageHeader() {
-  return (
-    <Fragment>
-      <h1 className="text-4xl font-bold text-foreground mb-2">The Internet</h1>
-      <p className="text-muted-foreground">A testing playground for automated testing practice</p>
-    </Fragment>
-  )
-}

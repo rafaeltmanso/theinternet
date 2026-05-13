@@ -13,11 +13,12 @@
 - `src/app/examples/` - 46 QA testing scenarios, each in its own directory with `page.tsx`
 - `src/app/api/` - API routes for CRUD operations (`/api/items`, `/api/paginated`, etc.)
 - `src/app/examples-data.tsx` - Registry of all examples with id, name, description, category
-- `src/components/` - Shared UI (theme-provider, example-card)
+- `src/components/` - Shared UI (theme-provider, theme-toggle, example-card)
 - Path alias: `@/*` maps to `./src/*`
 
 ## Auth Credentials
-- Username: `admin`, Password: `password` (for basic-auth and digest-auth examples)
+- `/examples/form-auth`: Username `tomsmith`, Password `SuperSecretPassword!`
+- `/examples/secure-download`: Username `admin`, Password `password`
 
 ## Key Conventions
 - Examples use `'use client'` directive (client components with React hooks)

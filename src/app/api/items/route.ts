@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { items, generateItemId, addItem } from '@/lib/api-store'
+import { items, generateItemId, addItem, clearItems } from '@/lib/api-store'
 
 export async function GET() {
   return NextResponse.json({ items, total: items.length })
@@ -34,6 +34,6 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE() {
-  items.length = 0
+  clearItems()
   return NextResponse.json({ message: 'All items deleted', items: [] })
 }

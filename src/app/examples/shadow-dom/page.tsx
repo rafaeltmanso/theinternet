@@ -9,30 +9,33 @@ export default function ShadowDOM() {
   useEffect(() => {
     if (hostRef.current && !hostRef.current.shadowRoot) {
       const shadow = hostRef.current.attachShadow({ mode: 'open' })
+      const style = document.createElement('style')
+      const content = document.createElement('div')
+      const heading = document.createElement('h2')
+      const description = document.createElement('p')
 
-      shadow.innerHTML = `
-        <style>
-          .shadow-content {
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px;
-            color: white;
-          }
-          .shadow-content h2 {
-            margin: 0 0 10px 0;
-            font-size: 20px;
-          }
-          .shadow-content p {
-            margin: 0;
-            font-size: 14px;
-            opacity: 0.9;
-          }
-        </style>
-        <div class="shadow-content">
-          <h2>I'm inside Shadow DOM</h2>
-          <p>This content is encapsulated in the Shadow DOM tree and cannot be accessed directly from the main DOM.</p>
-        </div>
+      style.textContent = `
+        .shadow-content {
+          padding: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          border-radius: 8px;
+          color: white;
+        }
+        .shadow-content h2 {
+          margin: 0 0 10px 0;
+          font-size: 20px;
+        }
+        .shadow-content p {
+          margin: 0;
+          font-size: 14px;
+          opacity: 0.9;
+        }
       `
+      content.className = 'shadow-content'
+      heading.textContent = "I'm inside Shadow DOM"
+      description.textContent = 'This content is encapsulated in the Shadow DOM tree and cannot be accessed directly from the main DOM.'
+      content.append(heading, description)
+      shadow.append(style, content)
     }
   }, [])
 

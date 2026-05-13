@@ -176,8 +176,9 @@ export default function InfiniteScrollPagination() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div className="p-4 rounded-lg bg-card border border-border">
-              <label className="block text-sm font-medium text-foreground mb-2">Items per page</label>
+              <label htmlFor="pagination-limit" className="block text-sm font-medium text-foreground mb-2">Items per page</label>
               <select
+                id="pagination-limit"
                 value={limit}
                 onChange={(e) => {
                   setLimit(Number(e.target.value))
@@ -193,8 +194,9 @@ export default function InfiniteScrollPagination() {
             </div>
 
             <div className="p-4 rounded-lg bg-card border border-border">
-              <label className="block text-sm font-medium text-foreground mb-2">Load delay</label>
+              <label htmlFor="pagination-delay" className="block text-sm font-medium text-foreground mb-2">Load delay</label>
               <select
+                id="pagination-delay"
                 value={loadDelay}
                 onChange={(e) => {
                   setLoadDelay(Number(e.target.value))
@@ -211,7 +213,7 @@ export default function InfiniteScrollPagination() {
             </div>
 
             <div className="p-4 rounded-lg bg-card border border-border">
-              <label className="block text-sm font-medium text-foreground mb-2">Status</label>
+              <h2 className="block text-sm font-medium text-foreground mb-2">Status</h2>
               <div className="flex items-center gap-2">
                 <span className="text-muted-foreground">Total:</span>
                 <span className="text-foreground font-mono">{totalItems}</span>
